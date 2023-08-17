@@ -1,25 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import axios from "axios"
 import { useEffect, useState } from "react"
 
-const useFetch = (count) => {
-    const endpoints = []
-    const [pokes, setPokes] = useState([])
+const useFetch = (limit) => {
+    const [allPokemon, setAllPokemon] = useState([])
+    // const [offset, setOffset] = useState()
 
-    for (let i = 1; i <= count; i++) {
-        endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
+    const getAllPokes = async () => {
+        let pokesURL = "https://pokeapi.co/api/v2/"
+
+        const res = await fetch(`${pokesURL}pokemon/?limit=${limit}&offset=0`)
+        const data = await res.json()
+
+        const promise = data.results.map(async (pokemon) => {
+            const res = await fetch(pokemon.url)
+            const data = await res.json()
+
+            return data
+        })
+
+        const results = await Promise.all(promise)
+        setAllPokemon(results)
     }
 
     useEffect(() => {
-        pokeAPI()
+        getAllPokes()
     }, [])
 
-
-    const pokeAPI = () => {
-        axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
-            .then((res) => { setPokes(res) })
-    }
-    return { pokes, setPokes }
+    return { allPokemon, setAllPokemon }
 }
 
 export default useFetch

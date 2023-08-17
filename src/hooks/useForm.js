@@ -1,19 +1,15 @@
 import useFetch from "../hooks/useFetch"
 
 const useForm = () => {
-    const { pokes, setPokes } = useFetch(151)
+    const { allPokemon, setAllPokemon } = useFetch(151)
 
     const pokeFilter = (name) => {
-        const pokeFiltered = pokes.filter(poke => poke.data.name.includes(name))
-        setPokes(pokeFiltered)
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        if (!pokes) return
+        let pokesFiltered = []
+        pokesFiltered = allPokemon.filter(poke => poke.name.includes(name))
+        setAllPokemon(pokesFiltered)
     }
 
-    return { handleSubmit, pokeFilter, pokes }
+    return { allPokemon, pokeFilter }
 }
 
 export default useForm
