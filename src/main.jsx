@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <Route element={<App />}>
         <Route path="/" element={<Home />} />
         <Route path="pokemon" element={<Pokemon />} />
-        <Route path="det-pokemon/:id" element={<DetPoke />} />
+        <Route path="pokemon/detPokemon/:id" element={<DetPoke />} />
       </Route>
     </Routes>
   </BrowserRouter>

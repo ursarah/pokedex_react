@@ -10,7 +10,7 @@ const PokeCards = ({ poke, showLink }) => {
                 <div className="flex my-[5px]">
                     {poke.types.map((type, i) => <span key={i} className={type.type.name}>{type.type.name.toUpperCase()}</span>)}
                 </div>
-                {showLink && (<Link className="font-bold duration-700 bg-[#3B4CCA] text-[#fbd743] py-[6px] px-[10px] rounded-lg hover:bg-[#fbd743] hover:text-[#3B4CCA]" to={`det-pokemon/${poke.id}`}>Detalhes</Link>)}
+                {showLink && (<Link className="font-bold duration-700 bg-[#3B4CCA] text-[#fbd743] py-[6px] px-[10px] rounded-lg hover:bg-[#fbd743] hover:text-[#3B4CCA]" to={`detPokemon/${poke.id}`}>Detalhes</Link>)}
             </div>
         </>
     )

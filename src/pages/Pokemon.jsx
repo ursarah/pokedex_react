@@ -1,13 +1,17 @@
+
 import Navbar from "../components/Navbar"
 import PokeCards from "../components/PokeCards"
 import useFetch from "../hooks/useFetch"
 
 const Pokemon = () => {
-    const { allPokemon, setAllPokemon } = useFetch(151)
+    const { allPokemon, setAllPokemon, getAllPokes } = useFetch(151)
 
     const pokeFilter = (name) => {
         let pokesFiltered = []
         pokesFiltered = allPokemon.filter(poke => poke.name.includes(name))
+        if (name === "") {
+            getAllPokes()
+        }
         setAllPokemon(pokesFiltered)
     }
 
