@@ -1,14 +1,19 @@
 import Navbar from "../components/Navbar"
 import PokeCards from "../components/PokeCards"
-import useForm from "../hooks/useForm"
+import useFetch from "../hooks/useFetch"
 
 const Pokemon = () => {
-    const { allPokemon } = useForm()
+    const { allPokemon, setAllPokemon } = useFetch(151)
 
-    console.log(allPokemon);
+    const pokeFilter = (name) => {
+        let pokesFiltered = []
+        pokesFiltered = allPokemon.filter(poke => poke.name.includes(name))
+        setAllPokemon(pokesFiltered)
+    }
+
     return (
         <>
-            <Navbar form={true} />
+            <Navbar form={true} pokeFilter={pokeFilter} />
             <div>
                 <h1 className="font-bold text-[35px] py-[2rem] text-center">Os primeiros 151:</h1>
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">

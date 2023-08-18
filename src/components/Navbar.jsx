@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
-import useForm from "../hooks/useForm"
 
-const Navbar = ({ form }) => {
-    const { pokeFilter } = useForm()
+const Navbar = ({ form, pokeFilter }) => {
     return (
         <nav className="w-full flex flex-col content-center lg:flex-row items-center lg:justify-between py-[2rem] px-[1rem] bg-[#121212] outline-3 outline outline-[#fbd743]">
             <div className="flex items-center gap-[0.5rem] ">
