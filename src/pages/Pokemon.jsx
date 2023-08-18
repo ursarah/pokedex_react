@@ -8,7 +8,7 @@ const Pokemon = () => {
 
     const pokeFilter = (name) => {
         let pokesFiltered = []
-        pokesFiltered = allPokemon.filter(poke => poke.name.includes(name))
+        pokesFiltered = allPokemon.filter(poke => poke.name.includes(name.toLowerCase()))
         if (name === "") {
             getAllPokes()
         }
